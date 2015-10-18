@@ -27,6 +27,12 @@
  * -# Activate Image, boot application.
  *
  */
+
+// #define LED_0 LED_RGB_RED
+// #define LED_1 LED_RGB_GREEN
+#define LED_2 LED_1
+#define LED_7 LED_1
+
 #include "dfu.h"
 #include "dfu_transport.h"
 #include "bootloader.h"
@@ -55,7 +61,7 @@
 
 #define IS_SRVC_CHANGED_CHARACT_PRESENT 0                                                       /**< Include or not the service_changed characteristic. if not enabled, the server's database cannot be changed for the lifetime of the device*/
 
-#define BOOTLOADER_BUTTON_PIN           BUTTON_7                                                /**< Button used to enter SW update mode. */
+#define BOOTLOADER_BUTTON_PIN           BUTTON_0                                                /**< Button used to enter SW update mode. */
 
 #define APP_GPIOTE_MAX_USERS            1                                                       /**< Number of GPIOTE users in total. Used by button module and dfu_transport_serial module (flow control). */
 

@@ -18,6 +18,11 @@
  * @brief DFU transport module interface.
  */
  
+// #define LED_0 LED_RGB_RED
+// #define LED_1 LED_RGB_GREEN
+#define LED_2 LED_1
+#define LED_7 LED_1
+
 #ifndef DFU_TRANSPORT_H__
 #define DFU_TRANSPORT_H__
 

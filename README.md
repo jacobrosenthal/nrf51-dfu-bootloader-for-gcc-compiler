@@ -1,5 +1,14 @@
 DFU-Bootloader-for-gcc-compiler
 ===============================
+
+#Operation
+* board needs softdevice flashed `Jacobs-MacBook-Air:gcc jacobrosenthal$ openocd -f board/nordic_nrf51822_mkit.cfg -c init -c reset init -c "program /Users/jacobrosenthal/Downloads/s110_nrf51822_7.3.0/s110_nrf51822_7.3.0_softdevice.hex" -c "exit"`
+* if seperately flashing softdevice and application code, need patched openocd https://sourceforge.net/p/openocd/tickets/108/
+* You may need to alter one of the common make files at Source/templates/gcc/Makefile
+* cd to nrf51-dfu-bootloader-for-gcc-compiler/nrf51822_v6.0.0 - GCC_Bootloader/Board/nrf6310/device_firmware_updates/bootloader - gcc - BLE/gcc
+* make
+* make flashopen-pca10001 
+
 This project contains code examples of a DFU bootloader modified to be built by gcc. 
 gcc_nrf51_bootloader_xxaa.ld is added
 PSTORAGE_MIN_BLOCK_SIZE was changed to 0x000c to match with gcc build.

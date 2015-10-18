@@ -147,6 +147,17 @@ clean:
 flash: $(OUTPUT_BINARY_DIRECTORY)/$(OUTPUT_FILENAME).hex
 	nrfjprog --reset --program $(OUTPUT_BINARY_DIRECTORY)/$(OUTPUT_FILENAME).hex
 
+## Program mkit/pca10000 dongle
+.PHONY: flashopen-pca10000
+flashopen-pca10000: $(OUTPUT_BINARY_DIRECTORY)/$(OUTPUT_FILENAME).hex
+	openocd -f interface/jlink.cfg -c "adapter_khz 2000; transport select swd; set WORKAREASIZE 0;" -f target/nrf51.cfg -c "program $(OUTPUT_BINARY_DIRECTORY)/$(OUTPUT_FILENAME).hex verify; exit"
+
+## Program pca10001, RedBearLab nRF51822, or pca10024 / nRF51288-mKIT / mkit
+.PHONY: flashopen-pca10001
+flashopen-pca10001: $(OUTPUT_BINARY_DIRECTORY)/$(OUTPUT_FILENAME).hex
+	openocd -f board/nordic_nrf51822_mkit.cfg -c init -c reset init -c "program $(OUTPUT_BINARY_DIRECTORY)/$(OUTPUT_FILENAME).hex" -c "exit"
+
+
 .PHONY: reset
 reset:
 	nrfjprog --reset
